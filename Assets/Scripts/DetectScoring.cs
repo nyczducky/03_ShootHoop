@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScoreKeep : MonoBehaviour {
+public class DetectScoring : MonoBehaviour {
 
-    int score = 0;
+    public int scorePerHit = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class ScoreKeep : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        score++;
-        print("You scored. Your current score is " + score);
+        ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        scoreKeeper.IncrementScore(scorePerHit);
     }
 }
