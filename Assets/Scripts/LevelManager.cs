@@ -4,17 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
+    public float timeTillNextLevel = 0.0f;
+
 	// Use this for initialization
 	void Start () {
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.Space))
+        if (timeTillNextLevel > 0)
         {
-            LoadNextScene();
+            timeTillNextLevel -= Time.deltaTime;
+            if (timeTillNextLevel < 0)
+            {
+                LoadNextScene();
+            }
         }
-	}
+    }
 
     public void LoadNextScene()
     {
